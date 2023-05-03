@@ -8,6 +8,9 @@ from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from src.exception import CustomException
 from src.logger import logging
 
+
+## to save the ovbject file crreated in the data_ingetion file and then again use in all other files
+
 def save_object(file_path, obj):
     try:
         dir_path = os.path.dirname(file_path)
@@ -19,6 +22,8 @@ def save_object(file_path, obj):
 
     except Exception as e:
         raise CustomException(e, sys)
+    
+#to evaluate the model in model_trainer pipeline
     
 def evaluate_model(X_train,y_train,X_test,y_test,models):
     try:
@@ -44,7 +49,9 @@ def evaluate_model(X_train,y_train,X_test,y_test,models):
     except Exception as e:
         logging.info('Exception occured during model training')
         raise CustomException(e,sys)
-    
+
+
+# to load the pickle files in predication pipeline
 def load_object(file_path):
     try:
         with open(file_path,'rb') as file_obj:
